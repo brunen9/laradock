@@ -109,6 +109,8 @@ services:
     php-worker:
       build:
         context: ./php-worker
+        args:
+          - INSTALL_INTL=${PHP_WORKER_INSTALL_INTL}
         dockerfile: "Dockerfile-${PHP_VERSION}"
       volumes_from:
         - applications

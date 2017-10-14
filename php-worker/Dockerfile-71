@@ -47,7 +47,18 @@ ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
 #
 # If you need to modify this image, feel free to do it right here.
 #
-    # -- Your awesome modifications go here -- #
+#####################################
+# Human Language and Character Encoding Support:
+#####################################
+ARG INSTALL_INTL=false
+ENV INSTALL_INTL ${INSTALL_INTL}
+RUN if [ ${INSTALL_INTL} = true ]; then \
+    apk --update add icu-dev \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-install intl \
+    && rm /var/cache/apk/* \
+    && mkdir -p /var/www
+;fi
 
 
 #
