@@ -111,6 +111,7 @@ services:
         context: ./php-worker
         args:
           - INSTALL_INTL=${PHP_WORKER_INSTALL_INTL}
+          - INSTALL_PGSQL=${PHP_WORKER_INSTALL_PGSQL}
         dockerfile: "Dockerfile-${PHP_VERSION}"
       volumes_from:
         - applications

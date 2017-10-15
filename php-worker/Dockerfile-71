@@ -60,6 +60,18 @@ RUN if [ ${INSTALL_INTL} = true ]; then \
     && mkdir -p /var/www \
 ;fi
 
+#####################################
+# PostgreSQL:
+#####################################
+ARG INSTALL_PGSQL=false
+ENV INSTALL_PGSQL ${INSTALL_PGSQL}
+RUN if [ ${INSTALL_PGSQL} = true ]; then \
+    apk --update add postgresql-dev \
+    && docker-php-ext-install pdo_pgsql \
+    && rm /var/cache/apk/* \
+    && mkdir -p /var/www \
+;fi
+
 
 #
 #--------------------------------------------------------------------------
