@@ -57,7 +57,7 @@ RUN if [ ${INSTALL_INTL} = true ]; then \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
     && rm /var/cache/apk/* \
-    && mkdir -p /var/www
+    && mkdir -p /var/www \
 ;fi
 
 
